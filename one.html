@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中亚外贸实战精英培训计划</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #2a4a7c, #3a6a9c);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: linear-gradient(to right, #1a3a5f, #2a5a8f);
+            color: white;
+            padding: 30px;
+            border-radius: 15px 15px 0 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: #ff9d00;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .title-section h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .title-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card i {
+            font-size: 2rem;
+            color: #2a5a8f;
+            margin-bottom: 15px;
+        }
+        
+        .card h3 {
+            color: #1a3a5f;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .tabs {
+            display: flex;
+            background: white;
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab {
+            padding: 15px 25px;
+            background: #e0e7f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            flex: 1;
+            font-weight: 600;
+            color: #1a3a5f;
+        }
+        
+        .tab.active {
+            background: #2a5a8f;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .day-plan {
+            margin-bottom: 30px;
+        }
+        
+        .day-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #2a5a8f;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e7f0;
+        }
+        
+        .day-title i {
+            font-size: 1.5rem;
+        }
+        
+        .time-slot {
+            display: flex;
+            margin-bottom: 20px;
+            background: #f8fafc;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .time {
+            background: #2a5a8f;
+            color: white;
+            padding: 15px;
+            min-width: 150px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .time span {
+            display: block;
+        }
+        
+        .time .time-range {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .session-details {
+            padding: 20px;
+            flex: 1;
+        }
+        
+        .session-title {
+            color: #1a3a5f;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .session-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+        }
+        
+        .tag {
+            background: #e0e7f0;
+            color: #2a5a8f;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .learning-outcome {
+            background: #e8f4ff;
+            padding: 10px 15px;
+            border-left: 4px solid #2a5a8f;
+            margin-top: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .instructor-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+        
+        .instructor-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2a5a8f, #1a3a5f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .instructor-info h2 {
+            color: #1a3a5f;
+            margin-bottom: 10px;
+        }
+        
+        .instructor-title {
+            color: #2a5a8f;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .instructor-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .highlight {
+            background: #e0e7f0;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .pricing-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .price {
+            font-size: 3rem;
+            color: #2a5a8f;
+            margin: 20px 0;
+            font-weight: 700;
+        }
+        
+        .price-note {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .cta-button {
+            background: linear-gradient(to right, #ff9d00, #ff7b00);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(255, 157, 0, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 157, 0, 0.4);
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            color: #ff9d00;
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .time-slot {
+                flex-direction: column;
+            }
+            
+            .time {
+                min-width: 100%;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            
+            .instructor-section {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <div class="title-section">
+                        <h1>中亚外贸实战精英培训计划</h1>
+                        <p>从0到1，精准开拓中亚五国市场</p>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p><i class="far fa-calendar-alt"></i> 2025年11月15日 - 11月17日</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 新疆 · 喀什市经开区泽普产业园（安美斯展厅）</p>
+                </div>
+            </div>
+        </header>
+        
+        <div class="info-cards">
+            <div class="card">
+                <i class="fas fa-bullseye"></i>
+                <h3>精准市场定位</h3>
+                <p>深入分析哈萨克斯坦、乌兹别克斯坦等中亚五国市场特点与机遇</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-hands-helping"></i>
+                <h3>实战落地指导</h3>
+                <p>手把手教您注册平台、上架商品、处理订单全流程</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-robot"></i>
+                <h3>AI赋能增效</h3>
+                <p>利用AI工具提升市场分析、客户开发与营销效率</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-network-wired"></i>
+                <h3>资源精准对接</h3>
+                <p>与中亚本地渠道商、物流商、服务商建立直接联系</p>
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <div class="tab active" data-tab="day1">第一天：市场认知与平台基础</div>
+            <div class="tab" data-tab="day2">第二天：实操演练与收款方案</div>
+            <div class="tab" data-tab="day3">第三天：多渠道获客与信任建立</div>
+        </div>
+        
+        <div id="day1" class="tab-content active">
+            <div class="day-plan">
+                <div class="day-title">
+                    <i class="far fa-sun"></i>
+                    <h2>第一天上午 (11:00 - 14:00)：市场认知与政策解读</h2>
+                </div>
+                
+                <div class="time-slot">
+                    <div class="time">
+                        <span class="time-range">11:00 - 12:30</span>
+                    </div>
+                    <div class="session-details">
+                        <h3 class="session-title">中亚五国市场深度解析</h3>
+                        <p>哈萨克斯坦、乌兹别克斯坦、吉尔吉斯斯坦、塔吉克斯坦、土库曼斯坦市场特点与消费趋势</p>
+                        <div class="session-tags">
+                            <span class="tag">市场分析</span>
+                            <span class="tag">消费趋势</span>
+                            <span class="tag">选品策略</span>
+                        </div>
+                        <div class="learning-outcome">
+                            <strong>学习成果：</strong> 掌握中亚五国市场特点，能够针对不同国家制定差异化产品策略
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="time-slot">
+                    <div class="time">
+                        <span class="time-range">12:30 - 14:00</span>
+                    </div>
+                    <div class="session-details">
+                        <h3 class="session-title">政策法规与关税同盟</h3>
+                        <p>欧亚经济联盟法规、海关政策、产品认证要求及税务筹划</p>
+                        <div class="session-tags">
+                            <span class="tag">政策法规</span>
+                            <span class="tag">关税同盟</span>
+                            <span class="tag">税务筹划</span>
+                        </div>
+                        <div class="learning-outcome">
+                            <strong>学习成果：</strong> 了解中亚贸易核心法规，规避常见合规风险，掌握税务优化方法
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="day-plan">
+                <div class="day-title">
+                    <i class="far fa-moon"></i>
+                    <h2>第一天下午 (15:00 - 19:00)：平台实操与AI赋能</h2>
+                </div>
+                
+                <div class="time-slot">
+                    <div class="time">
+                        <span class="time-range">15:00 - 17:00</span>
+                    </div>
+                    <div class="session-details">
+                        <h3 class="session-title">主流B2B/B2C平台实操</h3>
+                        <p>Kaspi.kz (哈萨克斯坦), Lalafo (吉尔吉斯斯坦), Uzum Market (乌兹别克斯坦) 平台注册、店铺设置与商品上架</p>
+                        <div class="session-tags">
+                            <span class="tag">平台实操</span>
+                            <span class="tag">店铺运营</span>
+                            <span class="tag">商品上架</span>
+                        </div>
+                        <div class="learning-outcome">
+                            <strong>学习成果：</strong> 亲手完成至少2个中亚电商平台的店铺注册与商品上架
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="time-slot">
+                    <div class="time">
+                        <span class="time-range">17:00 - 19:00</span>
+                    </div>
+                    <div class="session-details">
+                        <h3 class="session-title">AI赋能外贸全流程</h3>
+                        <p>利用AI工具进行市场调研、产品描述优化、客户沟通与营销内容生成</p>
+                        <div class="session-tags">
+                            <span class="tag">AI应用</span>
+                            <span class="tag">效率提升</span>
+                            <span class="tag">智能营销</span>
+                        </div>
+                        <div class="learning-outcome">
+                            <strong>学习成果：</strong> 掌握5种以上AI工具在中亚外贸中的应用，提升工作效率300%
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="day-plan">
+                <div class="day-title">
+                    <i class="fas fa-users"></i>
+                    <h2>晚间交流 (20:00 - 22:00)</h2>
+                </div>
+                
+                <div class="time-slot">
+                    <div class="time">
+                        <span class="time-range">20:00 - 22:00</span>
+                    </div>
+                    <div class="session-details">
+                        <h3 class="session-title">"一带一路"下的中亚商机交流会</h3>
+                        <p>与行业专家、成功企业家面对面交流，分享实战经验，对接优质资源</p>
+                        <div class="session-tags">
+                            <span class="tag">资源对接</span>
+                            <span class="tag">经验分享</span>
+                            <span class="tag">人脉拓展</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="day2" class="tab-content">
+            <!-- 第二天内容结构类似，此处省略详细代码 -->
+            <div class="day-plan">
+                <div class="day-title">
+                    <i class="far fa-sun"></i>
+                    <h2>第二天上午 (11:00 - 14:00)：外贸全流程实战</h2>
+                </div>
+                
+                <div class="time-slot">
+                    <div class="time">
+                        <span class="time-range">11:00 - 12:30</span>
+                    </div>
+                    <div class="session-details">
+                        <h3 class="session-title">外贸全流程情景模拟</h3>
+                        <p>从询盘、报价、合同签订到物流安排的全流程实战演练</p>
+                        <div class="learning-outcome">
+                            <strong>学习成果：</strong> 掌握完整外贸流程，能够独立处理中亚贸易订单
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="time-slot">
+                    <div class="time">
+                        <span class="time-range">12:30 - 14:00</span>
+                    </div>
+                    <div class="session-details">
+                        <h3 class="session-title">外贸收款与风险防范</h3>
+                        <p>中亚市场常用收款方式、外汇管制政策及风险防范措施</p>
+                        <div class="learning-outcome">
+                            <strong>学习成果：</strong> 掌握3种以上安全收款方式，有效防范外汇风险
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="day-plan">
+                <div class="day-title">
+                    <i class="far fa-moon"></i>
+                    <h2>第二天下午 (15:00 - 19:00)：垂直领域深度挖掘</h2>
+                </div>
+                
+                <div class="time-slot">
+                    <div class="time">
+                        <span class="time-range">15:00 - 17:00</span>
+                    </div>
+                    <div class="session-details">
+                        <h3 class="session-title">热门品类深度解析</h3>
+                        <p>汽配、家电、建材、日用百货等热门品类在中亚市场的机遇与挑战</p>
+                        <div class="learning-outcome">
+                            <strong>学习成果：</strong> 找到适合自身产品的市场切入点，制定有效营销策略
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="time-slot">
+                    <div class="time">
+                        <span class="time-range">17:00 - 19:00</span>
+                    </div>
+                    <div class="session-details">
+                        <h3 class="session-title">俄罗斯电商平台深度实操</h3>
+                        <p>Ozon、Wildberries平台运营策略、物流解决方案与营销推广</p>
+                        <div class="learning-outcome">
+                            <strong>学习成果：</strong> 掌握俄罗斯主流电商平台运营技巧，完成店铺基础设置
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="day3" class="tab-content">
+            <!-- 第三天内容结构类似，此处省略详细代码 -->
+            <div class="day-plan">
+                <div class="day-title">
+                    <i class="far fa-sun"></i>
+                    <h2>第三天上午 (11:00 - 14:00)：多渠道获客策略</h2>
+                </div>
+                
+                <div class="time-slot">
+                    <div class="time">
+                        <span class="time-range">11:00 - 12:30</span>
+                    </div>
+                    <div class="session-details">
+                        <h3 class="session-title">线下获客与展会策略</h3>
+                        <p>如何有效参加中亚地区展会、开展地推活动及建立本地代理网络</p>
+                        <div class="learning-outcome">
+                            <strong>学习成果：</strong> 制定适合自身企业的线下获客方案，掌握展会高效参与技巧
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="time-slot">
+                    <div class="time">
+                        <span class="time-range">12:30 - 14:00</span>
+                    </div>
+                    <div class="session-details">
+                        <h3 class="session-title">客户信任建立与沟通技巧</h3>
+                        <p>中亚客户沟通特点、信任建立方法与跨文化谈判技巧</p>
+                        <div class="learning-outcome">
+                            <strong>学习成果：</strong> 掌握与中亚客户高效沟通的方法，提升成交率
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="day-plan">
+                <div class="day-title">
+                    <i class="far fa-moon"></i>
+                    <h2>第三天下午 (15:00 - 19:00)：数字化营销与独立站</h2>
+                </div>
+                
+                <div class="time-slot">
+                    <div class="time">
+                        <span class="time-range">15:00 - 17:00</span>
+                    </div>
+                    <div class="session-details">
+                        <h3 class="session-title">社交媒体获客实战</h3>
+                        <p>Instagram, TikTok, VK等社交媒体在中亚市场的运营策略与广告投放</p>
+                        <div class="learning-outcome">
+                            <strong>学习成果：</strong> 掌握至少2种社交媒体在中亚市场的获客方法
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="time-slot">
+                    <div class="time">
+                        <span class="time-range">17:00 - 19:00</span>
+                    </div>
+                    <div class="session-details">
+                        <h3 class="session-title">独立站建设与运营</h3>
+                        <p>面向中亚市场的独立站搭建、本地化优化与引流策略</p>
+                        <div class="learning-outcome">
+                            <strong>学习成果：</strong> 了解独立站建设全流程，制定初步的独立站运营计划
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="instructor-section">
+            <div class="instructor-img">
+                <i class="fas fa-user-tie"></i>
+            </div>
+            <div class="instructor-info">
+                <h2>赵广路</h2>
+                <div class="instructor-title">跨进电商品牌出海实战操盘手</div>
+                <p>操盘超500个B端和C端企业海外数字营销项目。Facebook/TK企业号运营单月获客300+案例操盘手。</p>
+                <div class="instructor-highlights">
+                    <div class="highlight">哈萨克斯坦市场专家</div>
+                    <div class="highlight">乌兹别克斯坦商业顾问</div>
+                    <div class="highlight">跨境支付解决方案专家</div>
+                    <div class="highlight">AI外贸应用先行者</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pricing-section">
+            <h2>投资你的外贸未来</h2>
+            <p>仅限30个席位，小班教学确保实操效果</p>
+            <div class="price">¥4,980</div>
+            <p class="price-note">原价 ¥7,980 | 早鸟价立省 ¥3,000 (10月31日前报名)</p>
+            <p>费用包含：3天培训资料、午餐、茶歇、平台注册指导、资源对接手册</p>
+            <p class="price-note">住宿自理，可协助预订协议酒店</p>
+            <button class="cta-button">立即报名抢占席位</button>
+            <p style="margin-top: 15px; font-size: 0.9rem;">报名咨询：181-5291-6998 | 支持企业对公转账</p>
+        </div>
+        
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-weixin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-weibo"></i></a>
+            <a href="#" class="social-link"><i class="fas fa-qrcode"></i></a>
+        </div>
+        
+        <div class="footer">
+            <p>中亚外贸实战精英培训计划 · 助力中国企业开拓一带一路新市场</p>
+            <p>© 2025 中疆国际 · 版权所有</p>
+        </div>
+    </div>
+
+    <script>
+        // 选项卡切换功能
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // 移除所有active类
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // 为当前选项卡添加active类
+                tab.classList.add('active');
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // 添加一些动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.classList.add('fade-in');
+            });
+        });
+    </script>
+</body>
+</html>
